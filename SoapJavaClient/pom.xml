@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>mx.itesm.pw2</groupId>
+    <groupId>mx.itesm.pg2</groupId>
     <artifactId>SoapJavaClient</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
@@ -33,7 +33,7 @@
                             <wsdlFiles>
                                 <wsdlFile>localhost_8080/Practica1WebSOAP/ServicioWeb.wsdl</wsdlFile>
                             </wsdlFiles>
-                            <packageName>mx.itesm.pw2.soapjavaclient</packageName>
+                            <packageName>mx.itesm.pg2.client</packageName>
                             <vmArgs>
                                 <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
                             </vmArgs>
@@ -41,6 +41,24 @@
                             <staleFile>${project.build.directory}/jaxws/stale/ServicioWeb.stale</staleFile>
                         </configuration>
                         <id>wsimport-generate-ServicioWeb</id>
+                        <phase>generate-sources</phase>
+                    </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>localhost_8080/Practica1WebSOAP/ServicioWeb.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <packageName>mx.itesm.pg2.client</packageName>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
+                            <wsdlLocation>http://localhost:8080/Practica1WebSOAP/ServicioWeb?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/ServicioWeb_1.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-ServicioWeb_1</id>
                         <phase>generate-sources</phase>
                     </execution>
                 </executions>
